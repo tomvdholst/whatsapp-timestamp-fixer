@@ -4,7 +4,7 @@ A Python script that restores the **DateTimeOriginal** EXIF metadata in images s
 
 WhatsApp often removes photo metadata, but it encodes the original date/time in the filename. This script parses the filename, reconstructs the timestamp, and restores it to the image metadata.
 
-## ✅ Features
+## Features
 
 - Supports .jpg and .jpeg files.
 - Supports filename patterns:
@@ -13,7 +13,7 @@ WhatsApp often removes photo metadata, but it encodes the original date/time in 
 - Supports `--dry-run`, `--verbose`, and `--quiet` modes
 - Recursively processes all folders
 
-## 🧰 Requirements
+## Requirements
 
 Install dependencies:
 
@@ -21,7 +21,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-## 🚀 Usage
+## Usage
 
 
 ```bash
@@ -36,7 +36,7 @@ If no directory is given, the current working directory is used.
 - `--verbose` – Show detailed output for all skipped/processed files.
 - `--quiet` – Show only essential output (suppresses most messages).
 
-## 🔍 Example
+### Example
 
 ```bash
 python whatsapp_timestamp_fixer.py ~/Downloads/whatsapp --verbose
@@ -47,6 +47,7 @@ Sample output:
 ```
 📂 /home/user/Downloads/whatsapp
 ⏭️ [not_whatsapp.jpg] skipped - not a WhatsApp file
+⏭️ [IMG-20190708-WA0018.jpg] skipped - metadata already present
 ✅ [IMG-20210324-WA0001.jpg] success - set to 2021-03-24 00:00:01
 ```
 
