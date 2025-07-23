@@ -64,10 +64,14 @@ def set_image_datetime(filepath, dt, dry_run=False):
             metadata = {"0th": {}, "Exif": {}, "1st": {}, "GPS": {}, "Interop": {}, "thumbnail": None}
 
         # Format datetime string to EXIF format (YYYY:MM:DD HH:MM:SS)
-        datetime_string = dt.strftime('%Y:%m:%d %H:%M:%S')
+        datetime_string = dt.strftime('%Y:%m:%d %H:%M:%S').encode("utf-8")
 
-        # Insert datetime into metadata
-        metadata['Exif'][piexif.ExifIFD.DateTimeOriginal] = datetime_string.encode("utf-8")
+        # Set DateTimeOriginal
+        metadata['Exif'][piexif.ExifIFD.DateTimeOriginal] = datetime_string
+        # Set DateTimeDigitized
+        metadata['Exif'][piexif.ExifIFD.DateTimeDigitized] = datetime_string
+        # Set DateTime (0th IFD)
+        metadata['0th'][piexif.ImageIFD.DateTime] = datetime_string
 
         # Write the metadata back to the file
         if not dry_run:
